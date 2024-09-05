@@ -10,6 +10,7 @@ Goals
 • Programs for backup, tracking changes (version control), text editors.
 • Machine Learning:
 • Unsupervised: clustering and principal component.
-• GIS Supervised: model assessment and selection.
+• Supervised: model assessment and selection.
+• GIS
 • Text as data
 • Webscraping
