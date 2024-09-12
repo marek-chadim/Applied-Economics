@@ -1,8 +1,8 @@
----------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
        log:  C:/Users/chadi/Dropbox/Applied-Economics/AK91/Analysis/Output/TableIV.log
   log type:  text
- opened on:   6 Sep 2024, 01:24:19
+ opened on:  12 Sep 2024, 10:40:16
 
 . 
 . keep if COHORT<20.30
@@ -202,8 +202,7 @@ Exogenous:  YR20 YR21 YR22 YR23 YR24 YR25 YR26 YR27 YR28 AGEQ AGEQSQ QTR120
             QTR220 QTR221 QTR222 QTR223 QTR224 QTR225 QTR226 QTR227 QTR228
             QTR229 QTR320 QTR321 QTR322 QTR323 QTR324 QTR325 QTR326 QTR328
 
-. ivregress 2sls LWKLYWGE YR20-YR28 RACE MARRIED SMSA NEWENG MIDATL ENOCENT WNOCENT SOATL ESOCENT WSOCENT MT  (EDUC = QTR120-QTR129 QTR
-> 220-QTR229 QTR320-QTR329 YR20-YR28)
+. ivregress 2sls LWKLYWGE YR20-YR28 RACE MARRIED SMSA NEWENG MIDATL ENOCENT WNOCENT SOATL ESOCENT WSOCENT MT  (EDUC = QTR120-QTR129 QTR220-QTR229 QTR320-QTR329 YR20-YR28)
 
 Instrumental-variables 2SLS regression            Number of obs   =    247,199
                                                   Wald chi2(21)   =   34596.79
@@ -245,8 +244,7 @@ Exogenous:  YR20 YR21 YR22 YR23 YR24 YR25 YR26 YR27 YR28 RACE MARRIED SMSA
             QTR229 QTR320 QTR321 QTR322 QTR323 QTR324 QTR325 QTR326 QTR327
             QTR328 QTR329
 
-. ivregress 2sls LWKLYWGE YR20-YR28 RACE MARRIED SMSA NEWENG MIDATL ENOCENT WNOCENT SOATL ESOCENT WSOCENT MT AGEQ AGEQSQ (EDUC = QTR120
-> -QTR129 QTR220-QTR229 QTR320-QTR329 YR20-YR28)
+. ivregress 2sls LWKLYWGE YR20-YR28 RACE MARRIED SMSA NEWENG MIDATL ENOCENT WNOCENT SOATL ESOCENT WSOCENT MT AGEQ AGEQSQ (EDUC = QTR120-QTR129 QTR220-QTR229 QTR320-QTR329 YR20-YR28)
 note: QTR327 omitted because of collinearity.
 note: QTR329 omitted because of collinearity.
 
@@ -297,5 +295,5 @@ Exogenous:  YR20 YR21 YR22 YR23 YR24 YR25 YR26 YR27 YR28 RACE MARRIED SMSA
       name:  <unnamed>
        log:  C:/Users/chadi/Dropbox/Applied-Economics/AK91/Analysis/Output/TableIV.log
   log type:  text
- closed on:   6 Sep 2024, 01:24:29
----------------------------------------------------------------------------------------------------------------------------------------
+ closed on:  12 Sep 2024, 10:40:28
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
