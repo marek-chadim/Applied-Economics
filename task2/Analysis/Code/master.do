@@ -38,12 +38,14 @@ cap program drop value_review
 value_review "AK91 AL99"
 
 * Task 2b: Clean AK91 code.
+* Review names.
+* Remove duplication of code and data.
 cd $rootdir
 !rmdir "Analysis/Input" /s /q
 mkdir "Analysis/Input"
 do Build/Code/Table_data.do
 
-* Analysis to replicate tables
+* Print output regression tables.
 cd $rootdir
 !rmdir "Analysis/Output" /s /q
 mkdir "Analysis/Output" 
@@ -51,5 +53,8 @@ do Analysis/Code/TableIV.do
 do Analysis/Code/TableV.do
 do Analysis/Code/TableVI.do
 
-!rmdir "Build/Input" /s /q
-!rmdir "Analysis/Input" /s /q
+* Write a program that runs regressions and prints output tables
+* Call this program to create columns 1 3 5 7 in the tables
+adopath ++ "C:/Users/chadi/Dropbox/Applied-Economics/task2/Analysis/Code"
+cap program drop columns1357
+columns1357
