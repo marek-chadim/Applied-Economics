@@ -5,10 +5,12 @@ gc()
 # Required libraries
 library(haven)   
 library(dplyr)   
-library(AER)     
+library(AER)
+library(ggplot2)
 
 # Load the AK91 dataset
-data <- read_dta("AK91/AK91/Raw/NEW7080.dta")
+getwd()
+data <- read_dta("./AK91/AK91/Raw/NEW7080.dta")
 
 # Data Prep
 data <- data |>

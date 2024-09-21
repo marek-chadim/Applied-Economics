@@ -21,7 +21,7 @@ YR26        0.1206861  0.0037029   32.59   <2e-16 ***
 YR27        0.0851009  0.0035969   23.66   <2e-16 ***
 YR28        0.0402911  0.0036434   11.06   <2e-16 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 0.6181 on 486915 degrees of freedom
 Multiple R-squared:  0.08282,	Adjusted R-squared:  0.0828 
@@ -51,7 +51,7 @@ YR28         0.0059328  0.0062818   0.944 0.344942
 AGEQ         0.1799818  0.0389345   4.623 3.79e-06 ***
 AGEQSQ      -0.0023404  0.0005592  -4.185 2.85e-05 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 0.618 on 486913 degrees of freedom
 Multiple R-squared:  0.08291,	Adjusted R-squared:  0.08289 
@@ -90,7 +90,7 @@ ESOCENT     -0.1202768  0.0041859 -28.734  < 2e-16 ***
 WSOCENT     -0.0583213  0.0036588 -15.940  < 2e-16 ***
 MT          -0.0674863  0.0044884 -15.036  < 2e-16 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 0.6022 on 486904 degrees of freedom
 Multiple R-squared:  0.1294,	Adjusted R-squared:  0.1294 
@@ -131,7 +131,7 @@ ESOCENT     -0.1202851  0.0041857 -28.737  < 2e-16 ***
 WSOCENT     -0.0580820  0.0036589 -15.874  < 2e-16 ***
 MT          -0.0675454  0.0044882 -15.050  < 2e-16 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 0.6021 on 486902 degrees of freedom
 Multiple R-squared:  0.1295,	Adjusted R-squared:  0.1295 
@@ -161,7 +161,7 @@ YR26        0.120680   0.003703   32.59  < 2e-16 ***
 YR27        0.085213   0.003675   23.19  < 2e-16 ***
 YR28        0.040319   0.003648   11.05  < 2e-16 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 0.6181 on 486915 degrees of freedom
 Multiple R-Squared: 0.08273,	Adjusted R-squared: 0.08271 
@@ -191,7 +191,7 @@ YR28         0.0056630  0.0063848   0.887 0.375110
 AGEQ         0.1325366  0.0485915   2.728 0.006381 ** 
 AGEQSQ      -0.0015820  0.0007254  -2.181 0.029203 *  
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 0.628 on 486913 degrees of freedom
 Multiple R-Squared: 0.05317,	Adjusted R-squared: 0.05315 
@@ -230,7 +230,7 @@ ESOCENT     -0.136132   0.018466  -7.372 1.68e-13 ***
 WSOCENT     -0.066576   0.010055  -6.621 3.56e-11 ***
 MT          -0.067894   0.004521 -15.019  < 2e-16 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 0.6033 on 486904 degrees of freedom
 Multiple R-Squared: 0.1261,	Adjusted R-squared: 0.1261 
@@ -271,7 +271,7 @@ MT          -0.0667398  0.0045838 -14.560  < 2e-16 ***
 AGEQ         0.1214883  0.0473931   2.563  0.01037 *  
 AGEQSQ      -0.0014595  0.0007093  -2.058  0.03961 *  
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 0.6068 on 486902 degrees of freedom
 Multiple R-Squared: 0.116,	Adjusted R-squared: 0.116 
