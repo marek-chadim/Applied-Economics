@@ -1,0 +1,224 @@
+---
+title: "wvs"
+author: "Marek Chadim"
+date: "2024-09-24"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(countrycode)
+
+rm(list=ls())
+gc()
+load("C:/Users/chadi/Dropbox/Applied-Economics/WVS/WV6_Data_R_v20201117.rdata")
+```
+
+# 1 Download data and documentation
+
+The dataset and the codebook from the World Value Survey can be
+downloaded from
+<http://www.worldvaluessurvey.org/WVSDocumentationWV6.jsp>
+
+The data has $89{,}565$ rows and $442$ columns.
+
+```{r}
+dim(WV6_Data_R_v20201117)
+```
+
+# 2 Creating the data set
+
+```{r}
+# Create the country variable based on country codes
+d <- WV6_Data_R_v20201117
+d <- d |> mutate(country = countrycode(V2, origin = "iso3n", destination = "country.name"))
+
+# View the country variable to verify correct labeling
+View(d$country)
+
+# Select variables related to values, social trust, happiness, and political orientation
+selected_vars <- c("V5", "V6", "V7", "V8", "V9", "V10", "V11", "V23", "V24", 
+                   "V55", "V56", "V59", "V67", "V69", "V70", "V71", "V72", 
+                   "V73", "V74", "V76", "V77", "V78", "V79", "V102", "V103", 
+                   "V104", "V105", "V106", "V107", "V108", "V109", "V110", 
+                   "V111", "V112", "V113", "V114", "V115", "V116", "V117", 
+                   "V118", "V119", "V120", "V121", "V122", "V123", "V124", 
+                   "V127", "V128", "V130", "V131", "V132", "V133", "V134", 
+                   "V135", "V136", "V137", "V138", "V139", "V97", "V98", 
+                   "V99", "V100", "V101", "V140", "V141", "V142", "V143", 
+                   "V145", "V146", "V147", "V148", "V149", "V150", "V151", 
+                   "V152", "V153", "V154", "V155", "V156", "V157", "V158", 
+                   "V159", "V160", "V161", "V162", "V163", "V164", "V165", 
+                   "V166", "V167", "V168", "V169", "V170")
+
+# Subset the data to the selected variables
+d <- d |> select(country, all_of(selected_vars))
+
+# Handle missing values by replacing specific negative codes with NA
+d <- d |> 
+  mutate(across(where(is.numeric), ~na_if(., -1))) |>
+  mutate(across(where(is.numeric), ~na_if(., -2))) |>
+  mutate(across(where(is.numeric), ~na_if(., -3))) |>
+  mutate(across(where(is.numeric), ~na_if(., -4))) |>
+  mutate(across(where(is.numeric), ~na_if(., -5)))
+
+# Aggregate data to the country level by calculating the mean of all variables
+d <- d |> group_by(country) |> summarise(across(where(is.numeric), ~mean(.x, na.rm = TRUE)))
+
+# Remove any columns with missing data
+d <- d[, colSums(is.na(d)) == 0]
+colSums(is.na(d)) == 0  # Check to confirm no missing values remain
+
+# Write the cleaned data to a CSV file
+write.csv(d, "wvs.csv", row.names = FALSE)
+```
+
+# 3 Analysis
+
+## PCA
+
+PCA is performed on the dataset after scaling the variables to have a
+standard deviation of one.
+
+```{r}
+wvs <- read.csv("wvs.csv")
+row.names(wvs) <- wvs[,1]
+wvs <- wvs[,-1]   
+countries <- row.names(wvs)
+countries
+names(wvs)
+```
+
+Without normalization, results differ due to variable scale differences:
+
+```{r}
+apply(wvs, 2, mean)
+apply(wvs, 2, var)
+```
+
+Running PCA with scaling:
+
+```{r}
+pr.out <- prcomp(wvs, scale = TRUE)
+names(pr.out)
+dim(pr.out$x)
+summary(pr.out)
+plot(pr.out)
+```
+
+A scree plot shows the PVE by each principal component, with the first
+four explaining over 50% of the variance:
+
+```{r chunk49}
+pve <- 100 * pr.out$sdev^2 / sum(pr.out$sdev^2)
+par(mfrow = c(1, 2))
+plot(pve,  type = "o", ylab = "PVE",
+    xlab = "Principal Component", col = "blue")
+plot(cumsum(pve), type = "o", ylab = "Cumulative PVE",
+    xlab = "Principal Component", col = "brown3")
+```
+
+## Cultural Map
+
+A biplot visualizes countries in the principal component space:
+
+```{r}
+par(mfrow = c(1, 1))
+biplot(pr.out, scale = 0, cex=.5)
+```
+
+### Interpretation
+
+PC1 (Self-expression vs. Survival values): This axis likely reflects the
+degree to which countries emphasize individual freedoms,
+self-expression, and creativity (variables such as V70 "New ideas and
+creativity"). Countries scoring high on this axis, like Sweden and
+Germany, represent liberal democracies with a high emphasis on
+self-expression and secular values. In contrast, countries scoring
+lower, such as Uzbekistan and Qatar, tend to prioritize survival values
+such as tradition and authority .
+
+PC2 (Economic vs. Traditional values): The second component seems to be
+linked to economic ideology and traditional beliefs. Variables such as
+V132 ("Religious authorities interpret laws") and V97 ("Private vs.
+state ownership") load heavily on this component, indicating a spectrum
+from market-driven economies to more traditionally governed societies.
+Japan and Sweden score high on this component, reflecting their advanced
+economies and progressive values, while countries like Haiti and Egypt
+cluster together, possibly due to their emphasis on traditional
+authority structures
+
+The analysis confirms the importance of self-expression versus survival
+values along the first principal component (PC1). However, the second
+principal component (PC2) does not clearly align with the
+secular-rational versus traditional divide. Instead, it seems to capture
+a spectrum of social hierarchy, religious authority, and respect for
+governance. Countries like Haiti and Egypt score high on PC2, reflecting
+the role of religious influence and social obedience, whereas countries
+like Japan and Sweden score lower, signaling a preference for secular,
+rational governance with less hierarchical structures.
+
+## Clustering Analysis of Countries
+
+```{r}
+wvs <- wvs[,-1]     
+sd.data <- scale(wvs)
+hc.out <- hclust(dist(sd.data))
+hc.clusters <- cutree(hc.out, 4)
+table(hc.clusters, row.names(wvs))
+```
+
+```{r}
+par(mfrow = c(1, 1))
+plot(hc.out, labels = row.names(wvs))
+abline(h = 139, col = "red")
+```
+
+### Interpretation of Country Clusters:
+
+Distinct Cluster - Haiti: Haiti stands out at a high level in the hierarchy, suggesting its responses are notably distinct, likely due to unique social, political, or cultural traits.
+
+Western Countries: The USA, Germany, Sweden, New Zealand, Australia, and the Netherlands form a close cluster, reflecting high-income, industrialized nations with shared values of individualism, democracy, secularism, and human rights.
+
+Latin American and European Countries: Argentina, Brazil, Chile, Peru, Spain, and Slovenia cluster together, likely blending European heritage with Latin American values focused on community, family, and moderate economic priorities.
+
+Middle Eastern and African Countries: Pakistan, Kuwait, Iraq, Libya, South Africa, Nigeria, and Malaysia form a broader cluster, reflecting traditionalism, strong family values, and religious orientations.
+
+Central/Eastern Europe and Asia: Russia, Kazakhstan, Azerbaijan, and China cluster, possibly due to post-Soviet or authoritarian influences, sharing similar values around authority and governance.
+
+## Clustering Analysis of Variables
+
+```{r}
+wvs.data <- t(wvs)
+sd.data <- scale(wvs.data)
+hc.out <- hclust(dist(sd.data))
+hc.clusters <- cutree(hc.out, 4)
+table(hc.clusters, colnames(wvs))
+```
+
+```{r}
+par(mfrow = c(1, 1))
+plot(hc.out, labels = colnames(wvs))
+abline(h = 139, col = "red")
+```
+
+### Interpretation of Variable Clusters:
+
+Cluster 1: This cluster contains variables related to financial
+satisfaction and democratic ideals, indicating an economic-political
+ideology theme.
+
+Cluster 2: Comprises variables focused on personal values, security, and
+creativity, balancing traditional and innovative aspects.
+
+Cluster 3: Primarily includes economic ideology questions such as
+private vs. state ownership and competition, highlighting ideological
+differences.
+
+Cluster 4: Features variables emphasizing democratic values and
+governance structures, particularly regarding the role of religion and
+elections.
