@@ -5,5 +5,5 @@
 - Unsupervised ML: clustering and PCA
 - Supervised ML: model assessment and selection
 - GIS, Text as data, Webscraping
-- 
+  
 ## Course director: [David Strömberg](https://davidstro.github.io/)
