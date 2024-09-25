@@ -10,25 +10,16 @@ C:.
 |   |       TableV.do
 |   |       TableVI.do
 |   |       
-|   +---Input
-|   |       TableIV_stata_data.dta
-|   |       TableVI_stata_data.dta
-|   |       TableV_stata_data.dta
-|   |       
-|   +---Output
-|   |       TableIV.log
-|   |       TableV.log
-|   |       TableVI.log
-|   |       
-|   \---Temp
+|   \---Output
+|           TableIV.log
+|           TableV.log
+|           TableVI.log
+|           
 +---Build
-|   +---Code
-|   |       TableIV_data.do
-|   |       TableVI_data.do
-|   |       TableV_data.do
-|   |       
-|   \---Input
-|           NEW7080.dta
+|   \---Code
+|           TableIV_data.do
+|           TableVI_data.do
+|           TableV_data.do
 |           
 +---Other
 |       Angrist-CompulsorySchoolAttendance-1991.pdf
