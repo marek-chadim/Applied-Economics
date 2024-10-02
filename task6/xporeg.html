@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Marek Chadim" />
+  <meta name="dcterms.date" content="2024-10-01" />
+  <title>Cross-fit partial out problem set</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+/* CSS for Markstat 2.0 using Pandoc 2.0 */
+body{padding:14px 28px; max-width:45em;}
+body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px;}
+h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
+h1 {font-size: 200%;}
+h2 {font-size: 150%;}
+h3 {font-size: 120%;}
+h4 {font-size: 100%; font-weight:bold}
+img.center {display:block; margin-left:auto; margin-right:auto}
+.small{font-size:8pt;}
+a {color: black;}
+a:visited {color: #808080;}
+a.plain {text-decoration:none;}
+a.plain:hover {text-decoration:underline;}
+.em {font-weight:bold;}
+pre, code {font-family: "lucida console", monospace;}
+pre.stata {font-size:13px; line-height:13px;}
+pre {padding:8px; border:1px solid #c0c0c0; border-radius:8px; background-color:#fdfdfd;}
+code {color:#3366cc; background-color:#fafafa;}
+pre code { color:black; background-color:white}
+/* Added for Pandoc */
+figure > img, div.figure > img {display:block; margin:auto}
+figcaption, p.caption {text-align:center; font-weight:bold; color:#3366cc;}
+h1.title {text-align:center; margin-bottom:0}
+p.author, h2.author {font-style:italic; text-align:center;margin-top:4px;margin-bottom:0}
+p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
+/* Tables*/
+table { margin:auto; border-collapse:collapse; }
+table caption { margin-bottom:1ex;}
+td {padding:0 0 0 0} /* override */
+table:not([class]) th { padding:4px 6px } 
+table:not([class]) td { padding:4px 6px } 
+table:not([class]) thead tr:first-child th {border-top:1px solid black; padding-top:6px}
+table:not([class]) thead tr:last-child  th {padding-bottom:6px}
+table:not([class]) tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
+table:not([class]) tbody tr:last-child  td {padding-bottom:6px;}
+table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid black;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Cross-fit partial out problem set</h1>
+<p class="author">Marek Chadim</p>
+<p class="date">1 October 2024</p>
+</header>
+<pre class='stata'>. clear all
+
+. use penn_jae
+
+. keep if tg ==0 | tg == 4
+(8,814 observations deleted)
+
+. rename tg D
+
+. replace D = 1 if D == 4
+(1,745 real changes made)
+
+. gen Y = ln(inuidur1)
+</pre>
+<pre class='stata'>. foreach x of varlist female-husd{
+  2. foreach y of varlist female-husd {
+  3. generate `x'X`y'=`x'*`y'
+  4. }
+  5. }
+</pre>
+<pre class='stata'>. vl set
+
+──────────────────┬────────────────────────────────────────────────────────────
+                  │                      Macro's contents
+                  ├────────────────────────────────────────────────────────────
+Macro             │  # Vars   Description
+──────────────────┼────────────────────────────────────────────────────────────
+System            │
+  $vlcategorical  │     323   categorical variables
+  $vlcontinuous   │       1   continuous variable
+  $vluncertain    │       3   perhaps continuous, perhaps categorical variables
+  $vlother        │      61   all missing or constant variables
+──────────────────┴────────────────────────────────────────────────────────────
+Notes
+
+      1. Review contents of vlcategorical and vlcontinuous to ensure they are correct.  Type vl list vlcategorical and type vl list vlcontinuous.
+
+      2. If there are any variables in vluncertain, you can reallocate them to vlcategorical, vlcontinuous, or vlother.  Type vl list vluncertain.
+
+      3. Use vl move to move variables among classifications.  For example, type vl move (x50 x80) vlcontinuous to move variables x50 and x80 to the continuous
+         classification.
+
+      4. vlnames are global macros.  Type the vlname without the leading dollar sign ($) when using vl commands.  Example: vlcategorical not $vlcategorical.  Type the
+         dollar sign with other Stata commands to get a varlist.
+
+. vl move (D) vlother
+note: 1 variable specified and 1 variable moved.
+
+──────────────────────────────
+Macro          # Added/Removed
+──────────────────────────────
+$vlcategorical              -1
+$vlcontinuous                0
+$vluncertain                 0
+$vlother                     1
+──────────────────────────────
+
+. vl substitute ifactors = i.vlcategorical
+
+. display "$ifactors"
+i.female i.black i.hispanic i.othrace i.dep i.q1 i.q2 i.q3 i.q4 i.v14 i.q5 i.q6 i.recall i.agelt35 i.agegt54 i.durable i.nondurable i.lusd i.husd i.femaleXfemale i.femal
+> eXblack i.femaleXhispanic i.femaleXothrace i.femaleXdep i.femaleXq1 i.femaleXq2 i.femaleXq3 i.femaleXq4 i.femaleXv14 i.femaleXq5 i.femaleXq6 i.femaleXrecall i.femaleXa
+> gelt35 i.femaleXagegt54 i.femaleXdurable i.femaleXnondurable i.femaleXlusd i.femaleXhusd i.blackXfemale i.blackXblack i.blackXdep i.blackXq2 i.blackXq3 i.blackXq4 i.bl
+> ackXv14 i.blackXq5 i.blackXq6 i.blackXrecall i.blackXagelt35 i.blackXagegt54 i.blackXdurable i.blackXnondurable i.blackXlusd i.blackXhusd i.hispanicXfemale i.hispanicX
+> hispanic i.hispanicXdep i.hispanicXq2 i.hispanicXq3 i.hispanicXq4 i.hispanicXv14 i.hispanicXq5 i.hispanicXq6 i.hispanicXrecall i.hispanicXagelt35 i.hispanicXagegt54 i.
+> hispanicXdurable i.hispanicXnondurable i.hispanicXlusd i.hispanicXhusd i.othraceXfemale i.othraceXothrace i.othraceXdep i.othraceXq2 i.othraceXq3 i.othraceXq4 i.othrac
+> eXv14 i.othraceXq5 i.othraceXrecall i.othraceXagelt35 i.othraceXagegt54 i.othraceXdurable i.othraceXnondurable i.othraceXlusd i.othraceXhusd i.depXfemale i.depXblack i
+> .depXhispanic i.depXothrace i.depXdep i.depXq1 i.depXq2 i.depXq3 i.depXq4 i.depXv14 i.depXq5 i.depXq6 i.depXrecall i.depXagelt35 i.depXagegt54 i.depXdurable i.depXnond
+> urable i.depXlusd i.depXhusd i.q1Xfemale i.q1Xdep i.q1Xq1 i.q1Xq6 i.q1Xrecall i.q1Xagelt35 i.q1Xagegt54 i.q1Xdurable i.q1Xlusd i.q2Xfemale i.q2Xblack i.q2Xhispanic i.q
+> 2Xothrace i.q2Xdep i.q2Xq2 i.q2Xq6 i.q2Xrecall i.q2Xagelt35 i.q2Xagegt54 i.q2Xdurable i.q2Xnondurable i.q2Xlusd i.q2Xhusd i.q3Xfemale i.q3Xblack i.q3Xhispanic i.q3Xoth
+> race i.q3Xdep i.q3Xq3 i.q3Xq6 i.q3Xrecall i.q3Xagelt35 i.q3Xagegt54 i.q3Xdurable i.q3Xnondurable i.q3Xlusd i.q3Xhusd i.q4Xfemale i.q4Xblack i.q4Xhispanic i.q4Xothrace 
+> i.q4Xdep i.q4Xq4 i.q4Xq6 i.q4Xrecall i.q4Xagelt35 i.q4Xagegt54 i.q4Xdurable i.q4Xnondurable i.q4Xlusd i.q4Xhusd i.v14Xfemale i.v14Xblack i.v14Xhispanic i.v14Xothrace i
+> .v14Xdep i.v14Xv14 i.v14Xq6 i.v14Xrecall i.v14Xagelt35 i.v14Xagegt54 i.v14Xdurable i.v14Xnondurable i.v14Xlusd i.v14Xhusd i.q5Xfemale i.q5Xblack i.q5Xhispanic i.q5Xoth
+> race i.q5Xdep i.q5Xq5 i.q5Xq6 i.q5Xrecall i.q5Xagelt35 i.q5Xagegt54 i.q5Xdurable i.q5Xnondurable i.q5Xlusd i.q5Xhusd i.q6Xfemale i.q6Xblack i.q6Xhispanic i.q6Xdep i.q6
+> Xq1 i.q6Xq2 i.q6Xq3 i.q6Xq4 i.q6Xv14 i.q6Xq5 i.q6Xq6 i.q6Xrecall i.q6Xagelt35 i.q6Xagegt54 i.q6Xdurable i.q6Xnondurable i.q6Xlusd i.q6Xhusd i.recallXfemale i.recallXbl
+> ack i.recallXhispanic i.recallXothrace i.recallXdep i.recallXq1 i.recallXq2 i.recallXq3 i.recallXq4 i.recallXv14 i.recallXq5 i.recallXq6 i.recallXrecall i.recallXagegt
+> 54 i.recallXdurable i.recallXnondurable i.recallXlusd i.recallXhusd i.agelt35Xfemale i.agelt35Xblack i.agelt35Xhispanic i.agelt35Xothrace i.agelt35Xdep i.agelt35Xq1 i.
+> agelt35Xq2 i.agelt35Xq3 i.agelt35Xq4 i.agelt35Xv14 i.agelt35Xq5 i.agelt35Xq6 i.agelt35Xagelt35 i.agelt35Xagegt54 i.agelt35Xdurable i.agelt35Xnondurable i.agelt35Xlusd 
+> i.agelt35Xhusd i.agegt54Xfemale i.agegt54Xblack i.agegt54Xhispanic i.agegt54Xothrace i.agegt54Xdep i.agegt54Xq1 i.agegt54Xq2 i.agegt54Xq3 i.agegt54Xq4 i.agegt54Xv14 i.
+> agegt54Xq5 i.agegt54Xq6 i.agegt54Xrecall i.agegt54Xagelt35 i.agegt54Xagegt54 i.agegt54Xnondurable i.agegt54Xlusd i.agegt54Xhusd i.durableXfemale i.durableXblack i.dura
+> bleXhispanic i.durableXothrace i.durableXdep i.durableXq1 i.durableXq2 i.durableXq3 i.durableXq4 i.durableXv14 i.durableXq5 i.durableXq6 i.durableXrecall i.durableXage
+> lt35 i.durableXdurable i.durableXnondurable i.durableXlusd i.durableXhusd i.nondurableXfemale i.nondurableXblack i.nondurableXhispanic i.nondurableXothrace i.nondurabl
+> eXdep i.nondurableXq2 i.nondurableXq3 i.nondurableXq4 i.nondurableXv14 i.nondurableXq5 i.nondurableXq6 i.nondurableXrecall i.nondurableXagelt35 i.nondurableXagegt54 i.
+> nondurableXdurable i.nondurableXnondurable i.lusdXfemale i.lusdXblack i.lusdXhispanic i.lusdXothrace i.lusdXdep i.lusdXq1 i.lusdXq2 i.lusdXq3 i.lusdXq4 i.lusdXv14 i.lu
+> sdXq5 i.lusdXq6 i.lusdXrecall i.lusdXagelt35 i.lusdXagegt54 i.lusdXdurable i.lusdXlusd i.husdXfemale i.husdXblack i.husdXhispanic i.husdXothrace i.husdXdep i.husdXq2 i
+> .husdXq3 i.husdXq4 i.husdXv14 i.husdXq5 i.husdXq6 i.husdXrecall i.husdXagelt35 i.husdXagegt54 i.husdXdurable i.husdXhusd
+</pre>
+<p>Use the cross-fit partialing out estimator and set the tuning
+parameter using the plugin formula</p>
+<pre class='stata'>. qui: xporegress Y D, controls($ifactors) xfolds(5) resample(15) rseed(42) selection(plugin) vce(cluster abdt)
+
+. etable
+
+──────────────────────────────
+                          Y   
+──────────────────────────────
+Treatment group         -0.086
+                       (0.037)
+Number of observations    5099
+──────────────────────────────
+</pre>
+<p>The results are similar to Table 1, column 1 of Chernozhukov et al
+(2018).</p>
+<p>The selected variables for a specific fold and sample are</p>
+<pre class='stata'>. dis e(k_controls_sel)
+33
+
+. dis e(controls_sel)
+0bn.agegt54Xq1 0bn.agelt35Xhusd 0bn.agelt35Xq1 0bn.black 0bn.blackXblack 0bn.blackXdurable 0bn.blackXrecall 0bn.husdXagelt35 0bn.husdXblack 0bn.nondurableXrecall 0bn.q1X
+> agelt35 0bn.q2Xq6 0bn.q6 0bn.q6Xq2 0bn.q6Xq6 0bn.q6Xrecall 0bn.recallXblack 0bn.recallXnondurable 1bn.agelt35Xhusd 1bn.agelt35Xq1 1bn.blackXrecall 1bn.depXq1 1bn.husdX
+> black 1bn.nondurableXrecall 1bn.q1Xagelt35 1bn.q1Xdep 1bn.q2Xq6 1bn.q6 1bn.q6Xq6 1bn.recallXblack 2bn.depXq6 2bn.q1Xdep 2bn.q6Xdep
+</pre>
+<p>Use the same specification but now select the tuning parameter by
+cross-validation</p>
+<pre class='stata'>. qui: xporegress Y D, controls($ifactors) xfolds(5) resample(15) rseed(42) selection(cv) vce(cluster abdt)
+
+. etable
+
+──────────────────────────────
+                          Y   
+──────────────────────────────
+Treatment group         -0.085
+                       (0.036)
+Number of observations    5099
+──────────────────────────────
+</pre>
+<p>The number of variables included is</p>
+<pre class='stata'>. dis e(k_controls_sel)
+114
+</pre>
+<p>This number higher because cross-validation typically underpenalizes
+to reduce bias to obtain better estimates but tends to select a
+substantial larger number of variables. This suggests cross-validation
+to be more suitable for the algorithm based on optimal instrument than
+for the algorithm based on double selection (Belloni, Chernozhukov &amp;
+Wei, 2016).</p>
+<pre class='stata'>. vl move (female-husd) vlother
+note: 19 variables specified and 19 variables moved.
+
+──────────────────────────────
+Macro          # Added/Removed
+──────────────────────────────
+$vlcategorical             -19
+$vlcontinuous                0
+$vluncertain                 0
+$vlother                    19
+──────────────────────────────
+
+. vl substitute ifactors2 = i.vlcategorical
+
+. display "$ifactors2"
+i.femaleXfemale i.femaleXblack i.femaleXhispanic i.femaleXothrace i.femaleXdep i.femaleXq1 i.femaleXq2 i.femaleXq3 i.femaleXq4 i.femaleXv14 i.femaleXq5 i.femaleXq6 i.fem
+> aleXrecall i.femaleXagelt35 i.femaleXagegt54 i.femaleXdurable i.femaleXnondurable i.femaleXlusd i.femaleXhusd i.blackXfemale i.blackXblack i.blackXdep i.blackXq2 i.bla
+> ckXq3 i.blackXq4 i.blackXv14 i.blackXq5 i.blackXq6 i.blackXrecall i.blackXagelt35 i.blackXagegt54 i.blackXdurable i.blackXnondurable i.blackXlusd i.blackXhusd i.hispan
+> icXfemale i.hispanicXhispanic i.hispanicXdep i.hispanicXq2 i.hispanicXq3 i.hispanicXq4 i.hispanicXv14 i.hispanicXq5 i.hispanicXq6 i.hispanicXrecall i.hispanicXagelt35 
+> i.hispanicXagegt54 i.hispanicXdurable i.hispanicXnondurable i.hispanicXlusd i.hispanicXhusd i.othraceXfemale i.othraceXothrace i.othraceXdep i.othraceXq2 i.othraceXq3 
+> i.othraceXq4 i.othraceXv14 i.othraceXq5 i.othraceXrecall i.othraceXagelt35 i.othraceXagegt54 i.othraceXdurable i.othraceXnondurable i.othraceXlusd i.othraceXhusd i.dep
+> Xfemale i.depXblack i.depXhispanic i.depXothrace i.depXdep i.depXq1 i.depXq2 i.depXq3 i.depXq4 i.depXv14 i.depXq5 i.depXq6 i.depXrecall i.depXagelt35 i.depXagegt54 i.d
+> epXdurable i.depXnondurable i.depXlusd i.depXhusd i.q1Xfemale i.q1Xdep i.q1Xq1 i.q1Xq6 i.q1Xrecall i.q1Xagelt35 i.q1Xagegt54 i.q1Xdurable i.q1Xlusd i.q2Xfemale i.q2Xbl
+> ack i.q2Xhispanic i.q2Xothrace i.q2Xdep i.q2Xq2 i.q2Xq6 i.q2Xrecall i.q2Xagelt35 i.q2Xagegt54 i.q2Xdurable i.q2Xnondurable i.q2Xlusd i.q2Xhusd i.q3Xfemale i.q3Xblack i
+> .q3Xhispanic i.q3Xothrace i.q3Xdep i.q3Xq3 i.q3Xq6 i.q3Xrecall i.q3Xagelt35 i.q3Xagegt54 i.q3Xdurable i.q3Xnondurable i.q3Xlusd i.q3Xhusd i.q4Xfemale i.q4Xblack i.q4Xh
+> ispanic i.q4Xothrace i.q4Xdep i.q4Xq4 i.q4Xq6 i.q4Xrecall i.q4Xagelt35 i.q4Xagegt54 i.q4Xdurable i.q4Xnondurable i.q4Xlusd i.q4Xhusd i.v14Xfemale i.v14Xblack i.v14Xhis
+> panic i.v14Xothrace i.v14Xdep i.v14Xv14 i.v14Xq6 i.v14Xrecall i.v14Xagelt35 i.v14Xagegt54 i.v14Xdurable i.v14Xnondurable i.v14Xlusd i.v14Xhusd i.q5Xfemale i.q5Xblack i
+> .q5Xhispanic i.q5Xothrace i.q5Xdep i.q5Xq5 i.q5Xq6 i.q5Xrecall i.q5Xagelt35 i.q5Xagegt54 i.q5Xdurable i.q5Xnondurable i.q5Xlusd i.q5Xhusd i.q6Xfemale i.q6Xblack i.q6Xh
+> ispanic i.q6Xdep i.q6Xq1 i.q6Xq2 i.q6Xq3 i.q6Xq4 i.q6Xv14 i.q6Xq5 i.q6Xq6 i.q6Xrecall i.q6Xagelt35 i.q6Xagegt54 i.q6Xdurable i.q6Xnondurable i.q6Xlusd i.q6Xhusd i.reca
+> llXfemale i.recallXblack i.recallXhispanic i.recallXothrace i.recallXdep i.recallXq1 i.recallXq2 i.recallXq3 i.recallXq4 i.recallXv14 i.recallXq5 i.recallXq6 i.recallX
+> recall i.recallXagegt54 i.recallXdurable i.recallXnondurable i.recallXlusd i.recallXhusd i.agelt35Xfemale i.agelt35Xblack i.agelt35Xhispanic i.agelt35Xothrace i.agelt3
+> 5Xdep i.agelt35Xq1 i.agelt35Xq2 i.agelt35Xq3 i.agelt35Xq4 i.agelt35Xv14 i.agelt35Xq5 i.agelt35Xq6 i.agelt35Xagelt35 i.agelt35Xagegt54 i.agelt35Xdurable i.agelt35Xnondu
+> rable i.agelt35Xlusd i.agelt35Xhusd i.agegt54Xfemale i.agegt54Xblack i.agegt54Xhispanic i.agegt54Xothrace i.agegt54Xdep i.agegt54Xq1 i.agegt54Xq2 i.agegt54Xq3 i.agegt5
+> 4Xq4 i.agegt54Xv14 i.agegt54Xq5 i.agegt54Xq6 i.agegt54Xrecall i.agegt54Xagelt35 i.agegt54Xagegt54 i.agegt54Xnondurable i.agegt54Xlusd i.agegt54Xhusd i.durableXfemale i
+> .durableXblack i.durableXhispanic i.durableXothrace i.durableXdep i.durableXq1 i.durableXq2 i.durableXq3 i.durableXq4 i.durableXv14 i.durableXq5 i.durableXq6 i.durable
+> Xrecall i.durableXagelt35 i.durableXdurable i.durableXnondurable i.durableXlusd i.durableXhusd i.nondurableXfemale i.nondurableXblack i.nondurableXhispanic i.nondurabl
+> eXothrace i.nondurableXdep i.nondurableXq2 i.nondurableXq3 i.nondurableXq4 i.nondurableXv14 i.nondurableXq5 i.nondurableXq6 i.nondurableXrecall i.nondurableXagelt35 i.
+> nondurableXagegt54 i.nondurableXdurable i.nondurableXnondurable i.lusdXfemale i.lusdXblack i.lusdXhispanic i.lusdXothrace i.lusdXdep i.lusdXq1 i.lusdXq2 i.lusdXq3 i.lu
+> sdXq4 i.lusdXv14 i.lusdXq5 i.lusdXq6 i.lusdXrecall i.lusdXagelt35 i.lusdXagegt54 i.lusdXdurable i.lusdXlusd i.husdXfemale i.husdXblack i.husdXhispanic i.husdXothrace i
+> .husdXdep i.husdXq2 i.husdXq3 i.husdXq4 i.husdXv14 i.husdXq5 i.husdXq6 i.husdXrecall i.husdXagelt35 i.husdXagegt54 i.husdXdurable i.husdXhusd
+</pre>
+<p>Set the raw covariates so that they are always included in the
+regression and use Lasso to select additional controls among the
+second-order terms.</p>
+<pre class='stata'>. qui: xporegress Y D , controls( (female-husd) $ifactors2) xfolds(5) resample(15) rseed(42) selection(plugin) vce(cluster abdt)
+
+. etable
+
+──────────────────────────────
+                          Y   
+──────────────────────────────
+Treatment group         -0.075
+                       (0.036)
+Number of observations    5099
+──────────────────────────────
+</pre>
+<p>The number of selected control variables is,</p>
+<pre class='stata'>. dis e(k_controls_sel)
+34
+</pre>
+<p>and they are</p>
+<pre class='stata'>. dis e(controls_sel)
+0bn.agelt35Xq1 0bn.hispanicXlusd 0bn.lusdXhispanic 0bn.nondurableXdurable 0bn.q1Xagelt35 0bn.q1Xq6 1bn.agelt35Xq1 1bn.depXothrace 1bn.depXq1 1bn.hispanicXlusd 1bn.othrac
+> eXdep 1bn.q1Xagegt54 1bn.q1Xagelt35 1bn.q1Xdep 2bn.q1Xdep agegt54 agelt35 black dep durable female hispanic husd lusd nondurable o.q5 othrace q1 q2 q3 q4 q6 recall v14
+</pre>
+</body>
+</html>

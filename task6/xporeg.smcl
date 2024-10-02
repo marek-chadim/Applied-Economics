@@ -1,0 +1,197 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}c:\Users\chadi\Dropbox\Applied-Economics\task6\xporeg.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 2 Oct 2024, 03:05:28
+{txt}
+{com}. //_1
+. clear all
+{res}{txt}
+{com}. use penn_jae
+{txt}
+{com}. keep if tg ==0 | tg == 4
+{txt}(8,814 observations deleted)
+
+{com}. rename tg D
+{res}{txt}
+{com}. replace D = 1 if D == 4
+{txt}(1,745 real changes made)
+
+{com}. gen Y = ln(inuidur1)
+{txt}
+{com}. //_2
+. foreach x of varlist female-husd{c -(}
+{txt}  2{com}. foreach y of varlist female-husd {c -(}
+{txt}  3{com}. generate `x'X`y'=`x'*`y'
+{txt}  4{com}. {c )-}
+{txt}  5{com}. {c )-}
+{txt}
+{com}. //_3
+. vl set
+{res}
+{txt}{hline 18}{c TT}{hline 60}
+{col 19}{c |}{col 42}Macro's contents
+{col 19}{c LT}{hline 60}
+Macro{col 19}{c |}  # Vars   Description
+{hline 18}{c +}{hline 60}
+System{col 19}{c |}
+{res}{col 3}$vlcategorical  {txt}{col 19}{c |}     323   categorical variables
+{res}{col 3}$vlcontinuous   {txt}{col 19}{c |}       1   continuous variable
+{res}{col 3}$vluncertain    {txt}{col 19}{c |}       3   perhaps continuous, perhaps categorical variables
+{res}{col 3}$vlother        {txt}{col 19}{c |}      61   all missing or constant variables
+{hline 18}{c BT}{hline 60}
+Notes
+
+{p 6 9 2}
+1. Review contents of {bf:vlcategorical} and
+{bf:vlcontinuous} to ensure they are correct.
+Type {bind:{bf:vl list vlcategorical}} and type
+{bind:{bf:vl list vlcontinuous}}.
+{p_end}
+
+{p 6 9 2}
+2. If there are any variables in {bf:vluncertain},
+you can reallocate them to {bf:vlcategorical},
+{bf:vlcontinuous}, or {bf:vlother}.
+Type {bind:{bf:vl list vluncertain}}.
+{p_end}
+
+{p 6 9 2}
+3. Use {bf:vl move} to move variables among classifications.
+For example, type
+{bind:{bf:vl move (x50 x80) vlcontinuous}}
+to move variables {bf:x50} and {bf:x80} to the continuous
+classification.
+{p_end}
+
+{p 6 9 2}
+4. {it:vlnames} are global macros.
+Type the {it:vlname} without the leading dollar sign
+({bf:$}) when using {bf:vl} commands.
+Example: {bf:vlcategorical} {it:not}
+{bf:$}{bf:vlcategorical}.
+Type the dollar sign with other Stata commands to get a
+{it:varlist}.
+{p_end}
+
+{com}. vl move (D) vlother
+{txt}{p 0 6 2}
+note: 1
+variable
+specified and 1
+variable
+moved.
+{p_end}
+
+{hline 30}
+Macro          # Added/Removed
+{hline 30}
+{res}$vlcategorical{col 22}       -1
+$vlcontinuous{col 22}        0
+$vluncertain{col 22}        0
+$vlother{col 22}        1
+{txt}{hline 30}
+
+{com}. vl substitute ifactors = i.vlcategorical
+{txt}
+{com}. display "$ifactors"
+{res}i.female i.black i.hispanic i.othrace i.dep i.q1 i.q2 i.q3 i.q4 i.v14 i.q5 i.q6 i.recall i.agelt35 i.agegt54 i.durable i.nondurable i.lusd i.husd i.femaleXfemale i.femaleXblack i.femaleXhispanic i.femaleXothrace i.femaleXdep i.femaleXq1 i.femaleXq2 i.femaleXq3 i.femaleXq4 i.femaleXv14 i.femaleXq5 i.femaleXq6 i.femaleXrecall i.femaleXagelt35 i.femaleXagegt54 i.femaleXdurable i.femaleXnondurable i.femaleXlusd i.femaleXhusd i.blackXfemale i.blackXblack i.blackXdep i.blackXq2 i.blackXq3 i.blackXq4 i.blackXv14 i.blackXq5 i.blackXq6 i.blackXrecall i.blackXagelt35 i.blackXagegt54 i.blackXdurable i.blackXnondurable i.blackXlusd i.blackXhusd i.hispanicXfemale i.hispanicXhispanic i.hispanicXdep i.hispanicXq2 i.hispanicXq3 i.hispanicXq4 i.hispanicXv14 i.hispanicXq5 i.hispanicXq6 i.hispanicXrecall i.hispanicXagelt35 i.hispanicXagegt54 i.hispanicXdurable i.hispanicXnondurable i.hispanicXlusd i.hispanicXhusd i.othraceXfemale i.othraceXothrace i.othraceXdep i.othraceXq2 i.othraceXq3 i.othraceXq4 i.othraceXv14 i.othraceXq5 i.othraceXrecall i.othraceXagelt35 i.othraceXagegt54 i.othraceXdurable i.othraceXnondurable i.othraceXlusd i.othraceXhusd i.depXfemale i.depXblack i.depXhispanic i.depXothrace i.depXdep i.depXq1 i.depXq2 i.depXq3 i.depXq4 i.depXv14 i.depXq5 i.depXq6 i.depXrecall i.depXagelt35 i.depXagegt54 i.depXdurable i.depXnondurable i.depXlusd i.depXhusd i.q1Xfemale i.q1Xdep i.q1Xq1 i.q1Xq6 i.q1Xrecall i.q1Xagelt35 i.q1Xagegt54 i.q1Xdurable i.q1Xlusd i.q2Xfemale i.q2Xblack i.q2Xhispanic i.q2Xothrace i.q2Xdep i.q2Xq2 i.q2Xq6 i.q2Xrecall i.q2Xagelt35 i.q2Xagegt54 i.q2Xdurable i.q2Xnondurable i.q2Xlusd i.q2Xhusd i.q3Xfemale i.q3Xblack i.q3Xhispanic i.q3Xothrace i.q3Xdep i.q3Xq3 i.q3Xq6 i.q3Xrecall i.q3Xagelt35 i.q3Xagegt54 i.q3Xdurable i.q3Xnondurable i.q3Xlusd i.q3Xhusd i.q4Xfemale i.q4Xblack i.q4Xhispanic i.q4Xothrace i.q4Xdep i.q4Xq4 i.q4Xq6 i.q4Xrecall i.q4Xagelt35 i.q4Xagegt54 i.q4Xdurable i.q4Xnondurable i.q4Xlusd i.q4Xhusd i.v14Xfemale i.v14Xblack i.v14Xhispanic i.v14Xothrace i.v14Xdep i.v14Xv14 i.v14Xq6 i.v14Xrecall i.v14Xagelt35 i.v14Xagegt54 i.v14Xdurable i.v14Xnondurable i.v14Xlusd i.v14Xhusd i.q5Xfemale i.q5Xblack i.q5Xhispanic i.q5Xothrace i.q5Xdep i.q5Xq5 i.q5Xq6 i.q5Xrecall i.q5Xagelt35 i.q5Xagegt54 i.q5Xdurable i.q5Xnondurable i.q5Xlusd i.q5Xhusd i.q6Xfemale i.q6Xblack i.q6Xhispanic i.q6Xdep i.q6Xq1 i.q6Xq2 i.q6Xq3 i.q6Xq4 i.q6Xv14 i.q6Xq5 i.q6Xq6 i.q6Xrecall i.q6Xagelt35 i.q6Xagegt54 i.q6Xdurable i.q6Xnondurable i.q6Xlusd i.q6Xhusd i.recallXfemale i.recallXblack i.recallXhispanic i.recallXothrace i.recallXdep i.recallXq1 i.recallXq2 i.recallXq3 i.recallXq4 i.recallXv14 i.recallXq5 i.recallXq6 i.recallXrecall i.recallXagegt54 i.recallXdurable i.recallXnondurable i.recallXlusd i.recallXhusd i.agelt35Xfemale i.agelt35Xblack i.agelt35Xhispanic i.agelt35Xothrace i.agelt35Xdep i.agelt35Xq1 i.agelt35Xq2 i.agelt35Xq3 i.agelt35Xq4 i.agelt35Xv14 i.agelt35Xq5 i.agelt35Xq6 i.agelt35Xagelt35 i.agelt35Xagegt54 i.agelt35Xdurable i.agelt35Xnondurable i.agelt35Xlusd i.agelt35Xhusd i.agegt54Xfemale i.agegt54Xblack i.agegt54Xhispanic i.agegt54Xothrace i.agegt54Xdep i.agegt54Xq1 i.agegt54Xq2 i.agegt54Xq3 i.agegt54Xq4 i.agegt54Xv14 i.agegt54Xq5 i.agegt54Xq6 i.agegt54Xrecall i.agegt54Xagelt35 i.agegt54Xagegt54 i.agegt54Xnondurable i.agegt54Xlusd i.agegt54Xhusd i.durableXfemale i.durableXblack i.durableXhispanic i.durableXothrace i.durableXdep i.durableXq1 i.durableXq2 i.durableXq3 i.durableXq4 i.durableXv14 i.durableXq5 i.durableXq6 i.durableXrecall i.durableXagelt35 i.durableXdurable i.durableXnondurable i.durableXlusd i.durableXhusd i.nondurableXfemale i.nondurableXblack i.nondurableXhispanic i.nondurableXothrace i.nondurableXdep i.nondurableXq2 i.nondurableXq3 i.nondurableXq4 i.nondurableXv14 i.nondurableXq5 i.nondurableXq6 i.nondurableXrecall i.nondurableXagelt35 i.nondurableXagegt54 i.nondurableXdurable i.nondurableXnondurable i.lusdXfemale i.lusdXblack i.lusdXhispanic i.lusdXothrace i.lusdXdep i.lusdXq1 i.lusdXq2 i.lusdXq3 i.lusdXq4 i.lusdXv14 i.lusdXq5 i.lusdXq6 i.lusdXrecall i.lusdXagelt35 i.lusdXagegt54 i.lusdXdurable i.lusdXlusd i.husdXfemale i.husdXblack i.husdXhispanic i.husdXothrace i.husdXdep i.husdXq2 i.husdXq3 i.husdXq4 i.husdXv14 i.husdXq5 i.husdXq6 i.husdXrecall i.husdXagelt35 i.husdXagegt54 i.husdXdurable i.husdXhusd
+{txt}
+{com}. //_4
+. qui: xporegress Y D, controls($ifactors) xfolds(5) resample(15) rseed(42) selection(plugin) vce(cluster abdt)
+{txt}
+{com}. etable
+{res}
+{smcl}
+{reset}{...}
+{hline 22}{c -}{hline 7}
+{space 22} {space 3}Y{space 3}
+{hline 22}{c -}{hline 7}
+Treatment group{space 7} {space 1}{result:-0.086}
+{space 22} {result:(0.037)}
+Number of observations {space 3}{result:5099}
+{hline 22}{c -}{hline 7}
+
+{com}. //_5
+. dis e(k_controls_sel)
+{res}33
+{txt}
+{com}. dis e(controls_sel)
+{res}0bn.agegt54Xq1 0bn.agelt35Xhusd 0bn.agelt35Xq1 0bn.black 0bn.blackXblack 0bn.blackXdurable 0bn.blackXrecall 0bn.husdXagelt35 0bn.husdXblack 0bn.nondurableXrecall 0bn.q1Xagelt35 0bn.q2Xq6 0bn.q6 0bn.q6Xq2 0bn.q6Xq6 0bn.q6Xrecall 0bn.recallXblack 0bn.recallXnondurable 1bn.agelt35Xhusd 1bn.agelt35Xq1 1bn.blackXrecall 1bn.depXq1 1bn.husdXblack 1bn.nondurableXrecall 1bn.q1Xagelt35 1bn.q1Xdep 1bn.q2Xq6 1bn.q6 1bn.q6Xq6 1bn.recallXblack 2bn.depXq6 2bn.q1Xdep 2bn.q6Xdep
+{txt}
+{com}. //_6
+. qui: xporegress Y D, controls($ifactors) xfolds(5) resample(15) rseed(42) selection(cv) vce(cluster abdt)
+{txt}
+{com}. etable
+{res}
+{smcl}
+{reset}{...}
+{hline 22}{c -}{hline 7}
+{space 22} {space 3}Y{space 3}
+{hline 22}{c -}{hline 7}
+Treatment group{space 7} {space 1}{result:-0.085}
+{space 22} {result:(0.036)}
+Number of observations {space 3}{result:5099}
+{hline 22}{c -}{hline 7}
+
+{com}. //_7
+. dis e(k_controls_sel)
+{res}114
+{txt}
+{com}. //_8
+. vl move (female-husd) vlother
+{txt}{p 0 6 2}
+note: 19
+variables
+specified and 19
+variables
+moved.
+{p_end}
+
+{hline 30}
+Macro          # Added/Removed
+{hline 30}
+{res}$vlcategorical{col 22}      -19
+$vlcontinuous{col 22}        0
+$vluncertain{col 22}        0
+$vlother{col 22}       19
+{txt}{hline 30}
+
+{com}. vl substitute ifactors2 = i.vlcategorical
+{txt}
+{com}. display "$ifactors2"
+{res}i.femaleXfemale i.femaleXblack i.femaleXhispanic i.femaleXothrace i.femaleXdep i.femaleXq1 i.femaleXq2 i.femaleXq3 i.femaleXq4 i.femaleXv14 i.femaleXq5 i.femaleXq6 i.femaleXrecall i.femaleXagelt35 i.femaleXagegt54 i.femaleXdurable i.femaleXnondurable i.femaleXlusd i.femaleXhusd i.blackXfemale i.blackXblack i.blackXdep i.blackXq2 i.blackXq3 i.blackXq4 i.blackXv14 i.blackXq5 i.blackXq6 i.blackXrecall i.blackXagelt35 i.blackXagegt54 i.blackXdurable i.blackXnondurable i.blackXlusd i.blackXhusd i.hispanicXfemale i.hispanicXhispanic i.hispanicXdep i.hispanicXq2 i.hispanicXq3 i.hispanicXq4 i.hispanicXv14 i.hispanicXq5 i.hispanicXq6 i.hispanicXrecall i.hispanicXagelt35 i.hispanicXagegt54 i.hispanicXdurable i.hispanicXnondurable i.hispanicXlusd i.hispanicXhusd i.othraceXfemale i.othraceXothrace i.othraceXdep i.othraceXq2 i.othraceXq3 i.othraceXq4 i.othraceXv14 i.othraceXq5 i.othraceXrecall i.othraceXagelt35 i.othraceXagegt54 i.othraceXdurable i.othraceXnondurable i.othraceXlusd i.othraceXhusd i.depXfemale i.depXblack i.depXhispanic i.depXothrace i.depXdep i.depXq1 i.depXq2 i.depXq3 i.depXq4 i.depXv14 i.depXq5 i.depXq6 i.depXrecall i.depXagelt35 i.depXagegt54 i.depXdurable i.depXnondurable i.depXlusd i.depXhusd i.q1Xfemale i.q1Xdep i.q1Xq1 i.q1Xq6 i.q1Xrecall i.q1Xagelt35 i.q1Xagegt54 i.q1Xdurable i.q1Xlusd i.q2Xfemale i.q2Xblack i.q2Xhispanic i.q2Xothrace i.q2Xdep i.q2Xq2 i.q2Xq6 i.q2Xrecall i.q2Xagelt35 i.q2Xagegt54 i.q2Xdurable i.q2Xnondurable i.q2Xlusd i.q2Xhusd i.q3Xfemale i.q3Xblack i.q3Xhispanic i.q3Xothrace i.q3Xdep i.q3Xq3 i.q3Xq6 i.q3Xrecall i.q3Xagelt35 i.q3Xagegt54 i.q3Xdurable i.q3Xnondurable i.q3Xlusd i.q3Xhusd i.q4Xfemale i.q4Xblack i.q4Xhispanic i.q4Xothrace i.q4Xdep i.q4Xq4 i.q4Xq6 i.q4Xrecall i.q4Xagelt35 i.q4Xagegt54 i.q4Xdurable i.q4Xnondurable i.q4Xlusd i.q4Xhusd i.v14Xfemale i.v14Xblack i.v14Xhispanic i.v14Xothrace i.v14Xdep i.v14Xv14 i.v14Xq6 i.v14Xrecall i.v14Xagelt35 i.v14Xagegt54 i.v14Xdurable i.v14Xnondurable i.v14Xlusd i.v14Xhusd i.q5Xfemale i.q5Xblack i.q5Xhispanic i.q5Xothrace i.q5Xdep i.q5Xq5 i.q5Xq6 i.q5Xrecall i.q5Xagelt35 i.q5Xagegt54 i.q5Xdurable i.q5Xnondurable i.q5Xlusd i.q5Xhusd i.q6Xfemale i.q6Xblack i.q6Xhispanic i.q6Xdep i.q6Xq1 i.q6Xq2 i.q6Xq3 i.q6Xq4 i.q6Xv14 i.q6Xq5 i.q6Xq6 i.q6Xrecall i.q6Xagelt35 i.q6Xagegt54 i.q6Xdurable i.q6Xnondurable i.q6Xlusd i.q6Xhusd i.recallXfemale i.recallXblack i.recallXhispanic i.recallXothrace i.recallXdep i.recallXq1 i.recallXq2 i.recallXq3 i.recallXq4 i.recallXv14 i.recallXq5 i.recallXq6 i.recallXrecall i.recallXagegt54 i.recallXdurable i.recallXnondurable i.recallXlusd i.recallXhusd i.agelt35Xfemale i.agelt35Xblack i.agelt35Xhispanic i.agelt35Xothrace i.agelt35Xdep i.agelt35Xq1 i.agelt35Xq2 i.agelt35Xq3 i.agelt35Xq4 i.agelt35Xv14 i.agelt35Xq5 i.agelt35Xq6 i.agelt35Xagelt35 i.agelt35Xagegt54 i.agelt35Xdurable i.agelt35Xnondurable i.agelt35Xlusd i.agelt35Xhusd i.agegt54Xfemale i.agegt54Xblack i.agegt54Xhispanic i.agegt54Xothrace i.agegt54Xdep i.agegt54Xq1 i.agegt54Xq2 i.agegt54Xq3 i.agegt54Xq4 i.agegt54Xv14 i.agegt54Xq5 i.agegt54Xq6 i.agegt54Xrecall i.agegt54Xagelt35 i.agegt54Xagegt54 i.agegt54Xnondurable i.agegt54Xlusd i.agegt54Xhusd i.durableXfemale i.durableXblack i.durableXhispanic i.durableXothrace i.durableXdep i.durableXq1 i.durableXq2 i.durableXq3 i.durableXq4 i.durableXv14 i.durableXq5 i.durableXq6 i.durableXrecall i.durableXagelt35 i.durableXdurable i.durableXnondurable i.durableXlusd i.durableXhusd i.nondurableXfemale i.nondurableXblack i.nondurableXhispanic i.nondurableXothrace i.nondurableXdep i.nondurableXq2 i.nondurableXq3 i.nondurableXq4 i.nondurableXv14 i.nondurableXq5 i.nondurableXq6 i.nondurableXrecall i.nondurableXagelt35 i.nondurableXagegt54 i.nondurableXdurable i.nondurableXnondurable i.lusdXfemale i.lusdXblack i.lusdXhispanic i.lusdXothrace i.lusdXdep i.lusdXq1 i.lusdXq2 i.lusdXq3 i.lusdXq4 i.lusdXv14 i.lusdXq5 i.lusdXq6 i.lusdXrecall i.lusdXagelt35 i.lusdXagegt54 i.lusdXdurable i.lusdXlusd i.husdXfemale i.husdXblack i.husdXhispanic i.husdXothrace i.husdXdep i.husdXq2 i.husdXq3 i.husdXq4 i.husdXv14 i.husdXq5 i.husdXq6 i.husdXrecall i.husdXagelt35 i.husdXagegt54 i.husdXdurable i.husdXhusd
+{txt}
+{com}. //_9
+. qui: xporegress Y D , controls( (female-husd) $ifactors2) xfolds(5) resample(15) rseed(42) selection(plugin) vce(cluster abdt)
+{txt}
+{com}. etable
+{res}
+{smcl}
+{reset}{...}
+{hline 22}{c -}{hline 7}
+{space 22} {space 3}Y{space 3}
+{hline 22}{c -}{hline 7}
+Treatment group{space 7} {space 1}{result:-0.075}
+{space 22} {result:(0.036)}
+Number of observations {space 3}{result:5099}
+{hline 22}{c -}{hline 7}
+
+{com}. //_10
+. dis e(k_controls_sel)
+{res}34
+{txt}
+{com}. //_11
+. dis e(controls_sel)
+{res}0bn.agelt35Xq1 0bn.hispanicXlusd 0bn.lusdXhispanic 0bn.nondurableXdurable 0bn.q1Xagelt35 0bn.q1Xq6 1bn.agelt35Xq1 1bn.depXothrace 1bn.depXq1 1bn.hispanicXlusd 1bn.othraceXdep 1bn.q1Xagegt54 1bn.q1Xagelt35 1bn.q1Xdep 2bn.q1Xdep agegt54 agelt35 black dep durable female hispanic husd lusd nondurable o.q5 othrace q1 q2 q3 q4 q6 recall v14
+{txt}
+{com}. //_^
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}c:\Users\chadi\Dropbox\Applied-Economics\task6\xporeg.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 2 Oct 2024, 03:16:21
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

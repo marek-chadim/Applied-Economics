@@ -1,0 +1,64 @@
+% Cross-fit partial out problem set
+% Marek Chadim
+% 1 October 2024
+                                                                
+	clear all
+	use penn_jae
+	keep if tg ==0 | tg == 4
+	rename tg D
+	replace D = 1 if D == 4
+	gen Y = ln(inuidur1)
+	
+	foreach x of varlist female-husd{
+	foreach y of varlist female-husd {
+	generate `x'X`y'=`x'*`y'
+	}
+	}
+	
+	vl set
+	vl move (D) vlother
+	vl substitute ifactors = i.vlcategorical
+	display "$ifactors"
+
+Use the cross-fit partialing out estimator and set the tuning parameter using the plugin formula
+
+	qui: xporegress Y D, controls($ifactors) xfolds(5) resample(15) rseed(42) selection(plugin) vce(cluster abdt)
+	etable
+
+The results are similar to Table 1, column 1 of Chernozhukov et al (2018).
+
+The selected variables for a specific fold and sample are
+
+	dis e(k_controls_sel)
+	dis e(controls_sel)
+
+Use the same specification but now select the tuning parameter by cross-validation
+
+	qui: xporegress Y D, controls($ifactors) xfolds(5) resample(15) rseed(42) selection(cv) vce(cluster abdt)
+	etable
+
+The number of variables included is
+
+    dis e(k_controls_sel)
+
+This number higher because cross-validation typically underpenalizes to reduce bias to obtain better estimates but tends to select a substantial larger number of variables. This suggests cross-validation to be more suitable for the algorithm
+based on optimal instrument than for the algorithm based on double selection (Belloni, Chernozhukov & Wei, 2016).
+
+	vl move (female-husd) vlother
+	vl substitute ifactors2 = i.vlcategorical
+	display "$ifactors2"
+
+Set the raw covariates so that they are always included in the regression and use Lasso to select additional controls among the second-order terms. 
+
+	qui: xporegress Y D , controls( (female-husd) $ifactors2) xfolds(5) resample(15) rseed(42) selection(plugin) vce(cluster abdt)
+	etable
+
+The number of selected control variables is,
+
+    dis e(k_controls_sel)
+
+and they are
+
+    dis e(controls_sel)
+
+
