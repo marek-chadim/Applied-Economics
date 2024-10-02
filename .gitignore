@@ -1,3 +1,6 @@
-.rdata
 .Rproj.user
-.mp4
+*.Rproj
+*.Rhistory
+*.Rdata
+*.dta
+*.mp4
