@@ -58,7 +58,7 @@ vec.pac= c("foreign", "quantreg", "gbm", "glmnet",
            "caret", "foreach", "multcomp","cowplot", "stringr", "abind")
 
 data  <- read.dta("sipp1991.dta");
-
+str(data)
 ################################ Inputs ########################################
 
 # Outcome Variable

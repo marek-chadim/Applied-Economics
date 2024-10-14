@@ -20,7 +20,7 @@ vec.pac= c("foreign", "quantreg", "gbm", "glmnet",
            "caret", "foreach", "multcomp","cowplot")
 
 lapply(vec.pac, require, character.only = TRUE) 
-source("ML_Functions.R")
+source("task6/MLInference/Heterogeneity/ML_Functions.R")
 ptm <- proc.time()
 
 set.seed(1211);
@@ -30,7 +30,8 @@ registerDoParallel(cl)
 
 ####################################### Load and Process Data  #######################################
 
-data        <- read.dta13("data_rep.dta")
+data        <- read.dta13("task6/MLInference/Heterogeneity/data_rep.dta")
+str(data)
 data$paire  <- factor(data$paire)
 a           <- as.data.frame(model.matrix(~data$paire-1))
 colnames(a) <- (substring( names(a), 6, 12))

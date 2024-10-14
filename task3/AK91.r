@@ -10,8 +10,8 @@ library(ggplot2)
 
 # Load the AK91 dataset
 getwd()
-setwd("C:/Users/chadi/Dropbox/Applied-Economics")
-data <- read_dta("./AK91/AK91/Raw/NEW7080.dta")
+#setwd("C:/Users/chadi/Dropbox/Applied-Economics")
+data <- read_dta("./AK91/Raw/NEW7080.dta")
 
 # Data Prep
 data <- data |>
