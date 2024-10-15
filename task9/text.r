@@ -213,13 +213,13 @@ ungroup() |>
 arrange(topic, -beta)
 
 ap_top_terms |>
-mutate(term = reorder_within(term, beta,topic)) |>
+mutate(term = reorder_within(term, beta, topic)) |>
 ggplot(aes(beta,term,fill=factor(topic))) + geom_col(show.legend = FALSE) + facet_wrap(~topic, scales = "free") + scale_y_reordered()
 
 sumlogbeta <- ap_topics |>
 mutate(logbeta = log(beta)) |>
 group_by(term) |>
-summarize(s_logbeta = sum(logbeta)) |>
+summarize(s_logbeta = sum(logbeta)) 
 
 #relative use measure
 ap_top_terms2 <- ap_topics |>
@@ -232,5 +232,5 @@ ungroup() |>
 arrange(topic, -term_score)
 
 ap_top_terms2 |>
-mutate(term = reorder_within(term, term_score,topic)) |>
+mutate(term = reorder_within(term, beta, topic)) |>
 ggplot(aes(beta,term,fill=factor(topic))) + geom_col(show.legend = FALSE) + facet_wrap(~topic, scales = "free") + scale_y_reordered()

@@ -29,7 +29,7 @@ rm(list = ls())
 indir='C:/Dropbox/Applied-Economics/task9/105'
 ```
 
-##Pre-processing
+## Pre-processing
 
 Read all speech-files into a corpus using the tm command VCorpus. Turn the data into a tibble with columns containing the name of file containing text, the word and row number.
 
@@ -234,7 +234,7 @@ s <- wordlist_s |>
 cast_sparse(speech,word,n)
 class(s)
 
-ap_lda10 <- LDA(s, k = 10, control = list(seed = 1234))
+ap_lda10 <- LDA(s, k = 5, control = list(seed = 1234))
 ap_topics <- tidy(ap_lda10, matrix = "beta")
 ap_topics
 ```
@@ -250,7 +250,7 @@ ungroup() |>
 arrange(topic, -beta)
 
 ap_top_terms |>
-mutate(term = reorder_within(term, beta,topic)) |>
+mutate(term = reorder_within(term, beta, topic)) |>
 ggplot(aes(beta,term,fill=factor(topic))) + geom_col(show.legend = FALSE) + facet_wrap(~topic, scales = "free") + scale_y_reordered()
 ```
 ```{r}
@@ -258,7 +258,7 @@ ggplot(aes(beta,term,fill=factor(topic))) + geom_col(show.legend = FALSE) + face
 sumlogbeta <- ap_topics |>
 mutate(logbeta = log(beta)) |>
 group_by(term) |>
-summarize(s_logbeta = sum(logbeta)) |>
+summarize(s_logbeta = sum(logbeta)) 
 
 ap_top_terms2 <- ap_topics |>
 inner_join(sumlogbeta) |>
@@ -270,6 +270,6 @@ ungroup() |>
 arrange(topic, -term_score)
 
 ap_top_terms2 |>
-mutate(term = reorder_within(term, term_score,topic)) |>
+mutate(term = reorder_within(term, beta, topic)) |>
 ggplot(aes(beta,term,fill=factor(topic))) + geom_col(show.legend = FALSE) + facet_wrap(~topic, scales = "free") + scale_y_reordered()
 ```
