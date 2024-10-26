@@ -12,3 +12,5 @@
 - task8: "L8b_CausalTrees"
 - task9: "L9_Text_as_Data"
 - task10: "L10_RGIS"
+- task11: "L11_Python"
+- task12: "L11b_Deep_Learning"
