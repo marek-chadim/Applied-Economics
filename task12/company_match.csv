@@ -1,0 +1,8 @@
+CompanyID_x,CompanyName_x,Industry,Founded_Year,Country_x,id_lt_x,CompanyID_y,CompanyName_y,Revenue (Millions USD),Num_Employees,Country_y,id_lt_y,score
+1,TechCorp,Technology,2005,USA,0,6,TechCorp,5500,12000,USA,5,1.0
+2,InfoTech Solutions,Technology,1998,Canada,1,2,InfoTech Soln,4500,8500,Canada,1,0.70727116
+3,GlobalSoft Inc,Software,2010,India,2,3,GlobalSoft Incorporated,3000,6000,India,2,0.99126273
+4,DataTech Co,Data Analytics,2012,Germany,3,4,DataTech Corporation,2500,5000,Germany,3,0.9917824
+5,SoftSys Ltd,Software,2003,UK,4,5,SoftSys Limited,4000,7500,UK,4,0.997345
+6,TechCorp,Technology,2005,USA,5,6,TechCorp,5500,12000,USA,5,1.0
+7,AlphaSoft,Software,2007,France,6,8,AlphaSoft Systems,3800,7000,Spain,6,0.9716331
